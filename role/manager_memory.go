@@ -23,7 +23,6 @@ package role
 import (
 	"sync"
 
-	"github.com/ory/hydra/pkg"
 	"github.com/ory/pagination"
 	"github.com/pborman/uuid"
 	"github.com/pkg/errors"
@@ -54,7 +53,7 @@ func (m *MemoryManager) CreateRole(r *Role) error {
 
 func (m *MemoryManager) GetRole(id string) (*Role, error) {
 	if r, ok := m.Roles[id]; !ok {
-		return nil, errors.WithStack(pkg.ErrNotFound)
+		return nil, errors.WithStack(errors.New("Not found"))
 	} else {
 		return &r, nil
 	}
